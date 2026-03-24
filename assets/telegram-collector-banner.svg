@@ -12,14 +12,18 @@
 
   <rect width="1200" height="300" rx="24" fill="url(#bg)"/>
 
-  <!-- Database icon (flipped vertically) -->
-  <g transform="translate(600 150) scale(1 -1) translate(-600 -150)">
-    <ellipse cx="600" cy="118" rx="150" ry="36" fill="#111827" stroke="#1F2937" stroke-width="2"/>
-    <path d="M450 118v110c0 20 67 36 150 36s150-16 150-36V118" fill="#111827" stroke="#1F2937" stroke-width="2"/>
-    <ellipse cx="600" cy="228" rx="150" ry="36" fill="#111827" stroke="#1F2937" stroke-width="2"/>
+  <!-- Database icon (flipped vertically), clean and centered-left -->
+  <g transform="translate(220 150) scale(1 -1) translate(-220 -150)">
+    <ellipse cx="220" cy="112" rx="120" ry="30" fill="#111827" stroke="#1F2937" stroke-width="2"/>
+    <path d="M100 112v96c0 18 54 32 120 32s120-14 120-32v-96" fill="#111827" stroke="#1F2937" stroke-width="2"/>
+    <ellipse cx="220" cy="208" rx="120" ry="30" fill="#111827" stroke="#1F2937" stroke-width="2"/>
 
-    <!-- Accent line -->
-    <path d="M500 170h200" stroke="url(#accent)" stroke-width="10" stroke-linecap="round" opacity="0.9"/>
-    <path d="M535 200h130" stroke="#94A3B8" stroke-width="8" stroke-linecap="round" opacity="0.35"/>
+    <!-- Single accent line (not chaotic) -->
+    <path d="M150 164h140" stroke="url(#accent)" stroke-width="10" stroke-linecap="round" opacity="0.9"/>
   </g>
+
+  <!-- Text block -->
+  <text x="420" y="140" fill="#E5E7EB" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="54" font-weight="800">Telegram Channel Collector</text>
+  <text x="420" y="190" fill="#9CA3AF" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="24">Webhook → Postgres (text, caption, file_id)</text>
+  <text x="420" y="236" fill="#6B7280" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas" font-size="18">channel_post · edited_channel_post · Prisma</text>
 </svg>
