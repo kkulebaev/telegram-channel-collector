@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model TelegramPost {
+  id              String   @id @default(cuid())
+
+  chatId          String
+  messageId       Int
+
+  date            DateTime
+  edited          Boolean  @default(false)
+
+  text            String?
+  caption         String?
+
+  entities        Json?
+  captionEntities Json?
+
+  mediaType       String?
+  fileId          String?
+
+  raw             Json?
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@unique([chatId, messageId])
+  @@index([chatId, date])
+}
