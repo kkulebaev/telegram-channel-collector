@@ -1,5 +1,17 @@
 # telegram-channel-collector
 
+<p align="center">
+  <img src="./assets/telegram-collector-banner.svg" alt="Telegram Channel Collector" width="1200" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/kkulebaev/telegram-channel-collector"><img alt="repo" src="https://img.shields.io/badge/repo-github-111827?logo=github" /></a>
+  <img alt="typescript" src="https://img.shields.io/badge/typescript-5.x-3178C6?logo=typescript&logoColor=white" />
+  <img alt="prisma" src="https://img.shields.io/badge/prisma-6.x-2D3748?logo=prisma&logoColor=white" />
+  <img alt="postgres" src="https://img.shields.io/badge/postgres-15%2B-4169E1?logo=postgresql&logoColor=white" />
+  <img alt="telegram" src="https://img.shields.io/badge/telegram-bot-26A5E4?logo=telegram&logoColor=white" />
+</p>
+
 Webhook service that collects posts from a Telegram channel and stores them in Postgres.
 
 ## What it stores
