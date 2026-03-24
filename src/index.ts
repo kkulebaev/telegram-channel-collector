@@ -7,18 +7,37 @@ import { getChannelMessage, isTelegramUpdate, pickMedia, verifyTelegramWebhook }
 
 const app = express();
 
+// Basic request logging (method, path, status, duration). No bodies/headers.
+app.use((req, res, next) => {
+  const start = Date.now();
+  res.on('finish', () => {
+    const ms = Date.now() - start;
+    console.log(`${req.method} ${req.originalUrl || req.url} -> ${res.statusCode} (${ms}ms)`);
+  });
+  next();
+});
+
 app.use(express.json({ limit: '2mb' }));
 
 app.get('/healthz', (_req, res) => res.status(200).send('ok'));
 
 app.post('/telegram/webhook', async (req, res) => {
   const verify = verifyTelegramWebhook({ headers: req.headers });
-  if (!verify.ok) return res.status(401).json({ ok: false, error: verify.reason });
+  if (!verify.ok) {
+    console.warn('webhook rejected', { reason: verify.reason });
+    return res.status(401).json({ ok: false, error: verify.reason });
+  }
 
-  if (!isTelegramUpdate(req.body)) return res.status(400).json({ ok: false, error: 'Bad update' });
+  if (!isTelegramUpdate(req.body)) {
+    console.warn('bad update payload');
+    return res.status(400).json({ ok: false, error: 'Bad update' });
+  }
 
   const msg = getChannelMessage(req.body);
-  if (!msg) return res.status(200).json({ ok: true, skipped: 'not-channel-post' });
+  if (!msg) {
+    console.log('skip update (not channel_post)', { updateId: req.body.update_id });
+    return res.status(200).json({ ok: true, skipped: 'not-channel-post' });
+  }
 
   const allowedChatId = env('TELEGRAM_CHANNEL_CHAT_ID');
   const chatId = String(msg.chat.id);
@@ -27,10 +46,21 @@ app.post('/telegram/webhook', async (req, res) => {
   const postUrl = channelUsername ? `https://t.me/${channelUsername.replace(/^@/, '')}/${msg.message_id}` : null;
 
   if (allowedChatId && chatId !== allowedChatId.trim()) {
+    console.log('skip update (other chat)', { updateId: req.body.update_id, chatId });
     return res.status(200).json({ ok: true, skipped: 'other-chat' });
   }
 
   const media = pickMedia(msg);
+
+  console.log('store post', {
+    updateId: req.body.update_id,
+    chatId,
+    messageId: msg.message_id,
+    edited: Boolean(msg.edit_date),
+    mediaType: media.mediaType,
+    hasText: Boolean(msg.text),
+    hasCaption: Boolean(msg.caption),
+  });
 
   const date = new Date((msg.edit_date ?? msg.date) * 1000);
   const edited = Boolean(msg.edit_date);
