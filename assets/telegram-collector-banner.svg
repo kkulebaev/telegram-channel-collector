@@ -1,0 +1,37 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="300" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1220"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#10B981"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="300" rx="24" fill="url(#bg)"/>
+
+  <!-- Left card: Telegram channel post -->
+  <rect x="84" y="72" width="260" height="156" rx="22" fill="#0F172A" stroke="#1F2937"/>
+  <rect x="118" y="104" width="188" height="18" rx="9" fill="#94A3B8" opacity="0.25"/>
+  <rect x="118" y="134" width="188" height="18" rx="9" fill="#94A3B8" opacity="0.25"/>
+  <rect x="118" y="164" width="140" height="18" rx="9" fill="#94A3B8" opacity="0.25"/>
+  <rect x="118" y="194" width="92" height="18" rx="9" fill="url(#accent)" opacity="0.9"/>
+
+  <!-- Middle arrow -->
+  <path d="M368 150h90" stroke="#6B7280" stroke-width="6" stroke-linecap="round"/>
+  <path d="M458 150l18-10v20l-18-10z" fill="#6B7280"/>
+
+  <!-- Right card: Database -->
+  <rect x="478" y="72" width="260" height="156" rx="22" fill="#0F172A" stroke="#1F2937"/>
+  <ellipse cx="608" cy="108" rx="84" ry="22" fill="#111827" stroke="#1F2937"/>
+  <path d="M524 108v70c0 12 38 22 84 22s84-10 84-22v-70" fill="#111827" stroke="#1F2937"/>
+  <ellipse cx="608" cy="178" rx="84" ry="22" fill="#111827" stroke="#1F2937"/>
+  <path d="M552 140h112" stroke="url(#accent)" stroke-width="8" stroke-linecap="round" opacity="0.9"/>
+
+  <!-- Title -->
+  <text x="780" y="140" fill="#E5E7EB" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="54" font-weight="800">Telegram Channel Collector</text>
+  <text x="780" y="190" fill="#9CA3AF" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="24">Webhook → Postgres (text, caption, file_id)</text>
+  <text x="780" y="236" fill="#6B7280" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas" font-size="18">channel_post · edited_channel_post · Prisma</text>
+</svg>
