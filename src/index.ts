@@ -23,6 +23,9 @@ app.post('/telegram/webhook', async (req, res) => {
   const allowedChatId = env('TELEGRAM_CHANNEL_CHAT_ID');
   const chatId = String(msg.chat.id);
 
+  const channelUsername = env('TELEGRAM_CHANNEL_USERNAME');
+  const postUrl = channelUsername ? `https://t.me/${channelUsername.replace(/^@/, '')}/${msg.message_id}` : null;
+
   if (allowedChatId && chatId !== allowedChatId.trim()) {
     return res.status(200).json({ ok: true, skipped: 'other-chat' });
   }
@@ -48,6 +51,7 @@ app.post('/telegram/webhook', async (req, res) => {
       messageId: msg.message_id,
       date,
       edited,
+      postUrl,
       text: msg.text ?? null,
       caption: msg.caption ?? null,
       entities: prismaJson(entities),
@@ -59,6 +63,7 @@ app.post('/telegram/webhook', async (req, res) => {
     update: {
       date,
       edited,
+      postUrl,
       text: msg.text ?? null,
       caption: msg.caption ?? null,
       entities: prismaJson(entities),

@@ -15,6 +15,7 @@ Webhook service that collects posts from a Telegram channel and stores them in P
 - `TELEGRAM_BOT_TOKEN` — token from @BotFather
 - `TELEGRAM_WEBHOOK_SECRET` — secret token used to validate webhook calls
 - `TELEGRAM_CHANNEL_CHAT_ID` (optional) — if set, only messages from this `chat.id` are stored
+- `TELEGRAM_CHANNEL_USERNAME` (optional) — if set, `postUrl` is built as `https://t.me/<username>/<messageId>`
 - `PORT` (optional) — default `3000`
 
 ## Setup

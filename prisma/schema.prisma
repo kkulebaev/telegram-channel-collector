@@ -16,6 +16,8 @@ model TelegramPost {
   date            DateTime
   edited          Boolean  @default(false)
 
+  postUrl         String?
+
   text            String?
   caption         String?
 
