@@ -18,6 +18,8 @@ model TelegramPost {
 
   postUrl         String?
 
+  headline        String?
+
   text            String?
   caption         String?
 
