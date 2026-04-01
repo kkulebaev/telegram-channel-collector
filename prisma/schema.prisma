@@ -19,13 +19,8 @@ model TelegramPost {
   postUrl         String?
 
   text            String?
-  caption         String?
 
   entities        Json?
-  captionEntities Json?
-
-  mediaType       String?
-  fileId          String?
 
   raw             Json?
 

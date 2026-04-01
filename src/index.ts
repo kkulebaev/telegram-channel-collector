@@ -3,7 +3,7 @@ import express from 'express';
 import { prisma } from './prisma.js';
 import { env, mustEnv } from './env.js';
 import { isJsonValue } from './json.js';
-import { getChannelMessage, isTelegramUpdate, pickMedia, verifyTelegramWebhook } from './telegram.js';
+import { getChannelMessage, isTelegramUpdate, verifyTelegramWebhook } from './telegram.js';
 
 const app = express();
 
@@ -50,14 +50,11 @@ app.post('/telegram/webhook', async (req, res) => {
     return res.status(200).json({ ok: true, skipped: 'other-chat' });
   }
 
-  const media = pickMedia(msg);
-
   console.log('store post', {
     updateId: req.body.update_id,
     chatId,
     messageId: msg.message_id,
     edited: Boolean(msg.edit_date),
-    mediaType: media.mediaType,
     hasText: Boolean(msg.text),
     hasCaption: Boolean(msg.caption),
   });
@@ -66,7 +63,6 @@ app.post('/telegram/webhook', async (req, res) => {
   const edited = Boolean(msg.edit_date);
 
   const entities = msg.entities;
-  const captionEntities = msg.caption_entities;
   const raw = req.body;
 
   const prismaJson = (x: unknown) => {
@@ -83,11 +79,7 @@ app.post('/telegram/webhook', async (req, res) => {
       edited,
       postUrl,
       text: msg.text ?? null,
-      caption: msg.caption ?? null,
       entities: prismaJson(entities),
-      captionEntities: prismaJson(captionEntities),
-      mediaType: media.mediaType,
-      fileId: media.fileId,
       raw: prismaJson(raw),
     },
     update: {
@@ -95,11 +87,7 @@ app.post('/telegram/webhook', async (req, res) => {
       edited,
       postUrl,
       text: msg.text ?? null,
-      caption: msg.caption ?? null,
       entities: prismaJson(entities),
-      captionEntities: prismaJson(captionEntities),
-      mediaType: media.mediaType,
-      fileId: media.fileId,
       raw: prismaJson(raw),
     },
   });
