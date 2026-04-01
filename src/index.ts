@@ -65,6 +65,12 @@ app.post('/telegram/webhook', async (req, res) => {
   const date = new Date((msg.edit_date ?? msg.date) * 1000);
   const edited = Boolean(msg.edit_date);
 
+  const rawText = msg.text ?? null;
+  const parts = rawText === null ? null : rawText.split(/\n\n/);
+
+  const headline = parts === null ? null : (parts[0]?.trim() || null);
+  const text = parts === null ? null : (parts.slice(1).join('\n\n').trim() || null);
+
   const entities = msg.entities;
   const captionEntities = msg.caption_entities;
   const raw = req.body;
@@ -82,7 +88,8 @@ app.post('/telegram/webhook', async (req, res) => {
       date,
       edited,
       postUrl,
-      text: msg.text ?? null,
+      headline,
+      text,
       caption: msg.caption ?? null,
       entities: prismaJson(entities),
       captionEntities: prismaJson(captionEntities),
@@ -94,7 +101,8 @@ app.post('/telegram/webhook', async (req, res) => {
       date,
       edited,
       postUrl,
-      text: msg.text ?? null,
+      headline,
+      text,
       caption: msg.caption ?? null,
       entities: prismaJson(entities),
       captionEntities: prismaJson(captionEntities),
