@@ -1,7 +1,7 @@
 # telegram-channel-collector
 
 <p align="center">
-  <img src="./assets/telegram-collector-banner.svg" alt="Telegram Channel Collector" width="1200" />
+  <img src="./assets/telegram-collector-banner.svg" alt="Telegram Channel Collector — Webhook → Postgres" width="1000" />
 </p>
 
 <p align="center">
