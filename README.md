@@ -18,10 +18,10 @@ Webhook service that collects posts from a Telegram channel and stores them in a
 
 This project stores Telegram channel updates in a normalized format so they can be indexed, searched, and processed later.
 
-- Post payloads from `channel_post` and `edited_channel_post`
-- Message text and captions (when present)
-- Media metadata (e.g. `photo`/`video`) including Telegram `file_id`
-- Entities for text/caption (when present)
+- New and edited posts
+- Text content and captions (when present)
+- Media attachments and related metadata
+- Formatting/markup metadata (when present)
 
 ## Environment variables
 
