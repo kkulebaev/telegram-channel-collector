@@ -1,4 +1,4 @@
-<svg width="1200" height="300" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="300" gradientUnits="userSpaceOnUse">
       <stop stop-color="#0B1220"/>
@@ -10,10 +10,10 @@
     </linearGradient>
   </defs>
 
-  <rect width="1200" height="300" rx="24" fill="url(#bg)"/>
+  <rect width="1200" height="360" rx="24" fill="url(#bg)"/>
 
   <!-- Database icon (flipped vertically), clean and centered-left -->
-  <g transform="translate(220 150) scale(1 -1) translate(-220 -150)">
+  <g transform="translate(220 180) scale(1 -1) translate(-220 -180)">
     <ellipse cx="220" cy="112" rx="120" ry="30" fill="#111827" stroke="#1F2937" stroke-width="2"/>
     <path d="M100 112v96c0 18 54 32 120 32s120-14 120-32v-96" fill="#111827" stroke="#1F2937" stroke-width="2"/>
     <ellipse cx="220" cy="208" rx="120" ry="30" fill="#111827" stroke="#1F2937" stroke-width="2"/>
@@ -23,7 +23,19 @@
   </g>
 
   <!-- Text block -->
-  <text x="420" y="140" fill="#E5E7EB" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="54" font-weight="800">Telegram Channel Collector</text>
-  <text x="420" y="190" fill="#9CA3AF" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="24">Webhook → Postgres (text, caption, file_id)</text>
-  <text x="420" y="236" fill="#6B7280" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas" font-size="18">channel_post · edited_channel_post · Prisma</text>
+  <text x="420" y="165" fill="#E5E7EB" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="54" font-weight="800">Telegram Channel Collector</text>
+  <text x="420" y="215" fill="#9CA3AF" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="24">Webhook → Postgres (text, caption, file_id)</text>
+  <text x="420" y="261" fill="#6B7280" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas" font-size="18">channel_post · edited_channel_post · Prisma</text>
+
+  <!-- Top-right mini badges (visual only) -->
+  <g transform="translate(790 48)">
+    <rect x="0" y="0" width="116" height="32" rx="16" fill="#0F172A" stroke="#1F2937"/>
+    <text x="58" y="21" text-anchor="middle" fill="#93C5FD" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas" font-size="14" font-weight="700">TS 5.x</text>
+
+    <rect x="128" y="0" width="132" height="32" rx="16" fill="#0F172A" stroke="#1F2937"/>
+    <text x="194" y="21" text-anchor="middle" fill="#E5E7EB" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas" font-size="14" font-weight="700">Prisma 6.x</text>
+
+    <rect x="272" y="0" width="164" height="32" rx="16" fill="#0F172A" stroke="#1F2937"/>
+    <text x="354" y="21" text-anchor="middle" fill="#93C5FD" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas" font-size="14" font-weight="700">Postgres 15+</text>
+  </g>
 </svg>
