@@ -1,41 +1,69 @@
-<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Telegram Channel Collector banner">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="300" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0B1220"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#070A12"/>
+      <stop offset="0.55" stop-color="#0B1220"/>
       <stop offset="1" stop-color="#111827"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
-      <stop stop-color="#10B981"/>
-      <stop offset="1" stop-color="#22D3EE"/>
+
+    <linearGradient id="accent" x1="240" y1="64" x2="1040" y2="304" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE"/>
+      <stop offset="0.5" stop-color="#10B981"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(900 120) rotate(130) scale(420 320)">
+      <stop stop-color="#22D3EE" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#22D3EE" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="softBlur" x="-40" y="-40" width="1280" height="440" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+
+    <filter id="shadow" x="0" y="0" width="1200" height="360" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+
+    <mask id="fadeRight">
+      <rect width="1200" height="360" fill="white"/>
+      <rect x="880" y="0" width="320" height="360" fill="url(#fadeRightGrad)"/>
+    </mask>
+
+    <linearGradient id="fadeRightGrad" x1="880" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white"/>
+      <stop offset="1" stop-color="black"/>
     </linearGradient>
   </defs>
 
-  <rect width="1200" height="360" rx="24" fill="url(#bg)"/>
+  <!-- Background -->
+  <rect x="0" y="0" width="1200" height="360" rx="28" fill="url(#bg)" filter="url(#shadow)"/>
+  <rect x="0" y="0" width="1200" height="360" rx="28" fill="url(#glow)"/>
 
-  <!-- Database icon (flipped vertically), clean and centered-left -->
-  <g transform="translate(220 180) scale(1 -1) translate(-220 -180)">
-    <ellipse cx="220" cy="112" rx="120" ry="30" fill="#111827" stroke="#1F2937" stroke-width="2"/>
-    <path d="M100 112v96c0 18 54 32 120 32s120-14 120-32v-96" fill="#111827" stroke="#1F2937" stroke-width="2"/>
-    <ellipse cx="220" cy="208" rx="120" ry="30" fill="#111827" stroke="#1F2937" stroke-width="2"/>
+  <!-- Abstract geometry (no badges, no implementation details) -->
+  <g opacity="0.95" mask="url(#fadeRight)">
+    <path d="M-40 300C140 220 220 180 340 180C470 180 560 250 690 250C860 250 970 150 1240 120" stroke="url(#accent)" stroke-width="10" stroke-linecap="round" opacity="0.65"/>
+    <path d="M-20 140C120 90 230 70 360 80C520 95 630 150 770 150C960 150 1080 70 1260 40" stroke="#1F2937" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
 
-    <!-- Single accent line (not chaotic) -->
-    <path d="M150 164h140" stroke="url(#accent)" stroke-width="10" stroke-linecap="round" opacity="0.9"/>
+    <g filter="url(#softBlur)" opacity="0.65">
+      <circle cx="220" cy="110" r="80" fill="#10B981" fill-opacity="0.20"/>
+      <circle cx="310" cy="250" r="110" fill="#22D3EE" fill-opacity="0.14"/>
+      <circle cx="950" cy="110" r="120" fill="#A78BFA" fill-opacity="0.12"/>
+    </g>
+
+    <g opacity="0.9">
+      <path d="M140 92L208 132L160 196L92 156Z" fill="#0F172A" stroke="#1F2937" stroke-width="2"/>
+      <path d="M980 222L1052 254L1010 320L938 288Z" fill="#0F172A" stroke="#1F2937" stroke-width="2"/>
+      <path d="M760 72C790 42 840 42 870 72C900 102 900 152 870 182C840 212 790 212 760 182C730 152 730 102 760 72Z" fill="#0F172A" stroke="url(#accent)" stroke-width="2" opacity="0.8"/>
+    </g>
   </g>
 
-  <!-- Text block -->
-  <text x="420" y="165" fill="#E5E7EB" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="54" font-weight="800">Telegram Channel Collector</text>
-  <text x="420" y="215" fill="#9CA3AF" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="24">Webhook → Postgres (text, caption, file_id)</text>
-  <text x="420" y="261" fill="#6B7280" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas" font-size="18">channel_post · edited_channel_post · Prisma</text>
+  <!-- Text -->
+  <g>
+    <text x="96" y="160" fill="#E5E7EB" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="56" font-weight="850" letter-spacing="-0.02em">Telegram Channel Collector</text>
+    <text x="96" y="212" fill="#9CA3AF" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="24">Collect and archive posts from Telegram channels</text>
 
-  <!-- Top-right mini badges (visual only) -->
-  <g transform="translate(790 48)">
-    <rect x="0" y="0" width="116" height="32" rx="16" fill="#0F172A" stroke="#1F2937"/>
-    <text x="58" y="21" text-anchor="middle" fill="#93C5FD" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas" font-size="14" font-weight="700">TS 5.x</text>
-
-    <rect x="128" y="0" width="132" height="32" rx="16" fill="#0F172A" stroke="#1F2937"/>
-    <text x="194" y="21" text-anchor="middle" fill="#E5E7EB" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas" font-size="14" font-weight="700">Prisma 6.x</text>
-
-    <rect x="272" y="0" width="164" height="32" rx="16" fill="#0F172A" stroke="#1F2937"/>
-    <text x="354" y="21" text-anchor="middle" fill="#93C5FD" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas" font-size="14" font-weight="700">Postgres 15+</text>
+    <!-- Accent underline -->
+    <rect x="96" y="236" width="520" height="6" rx="3" fill="url(#accent)" opacity="0.85"/>
   </g>
 </svg>
