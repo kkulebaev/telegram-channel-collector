@@ -16,12 +16,12 @@ Webhook service that collects posts from a Telegram channel and stores them in a
 
 ## What it stores
 
-This project stores Telegram channel updates in a normalized format so they can be indexed, searched, and processed later.
+Each incoming update is stored as a single record keyed by channel and message id.
 
-- New and edited posts
-- Text content and captions (when present)
-- Media attachments and related metadata
-- Formatting/markup metadata (when present)
+- The latest version of a post (new or edited)
+- Extracted text content (headline + body) when available
+- A permalink to the post (optional, if channel username is configured)
+- The original Telegram update payload for debugging/backfills
 
 ## Environment variables
 
