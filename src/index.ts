@@ -62,7 +62,9 @@ app.post('/telegram/webhook', async (req, res) => {
   const date = new Date((msg.edit_date ?? msg.date) * 1000);
   const edited = Boolean(msg.edit_date);
 
-  const rawText = msg.text ?? null;
+  // For photo/video posts, Telegram puts the content into `caption` instead of `text`.
+  // We want to treat caption as the source of truth when it exists.
+  const rawText = msg.caption ?? msg.text ?? null;
   const parts = rawText === null ? null : rawText.split(/\n\n/);
 
   const headline = parts === null ? null : (parts[0]?.trim() || null);
